@@ -1,6 +1,6 @@
 Name:		yaml-cpp
 Version:	0.2.7
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	A YAML parser and emitter for C++
 Group:		Development/C++ 
 License:	MIT 
@@ -32,13 +32,13 @@ sed -i 's/\r//' license.txt
 %build
 # ask cmake to not strip binaries
 %cmake -DYAML_CPP_BUILD_TOOLS=0
-%make VERBOSE=1 %{?_smp_mflags}
+%make VERBOSE=1
 
 %install
 rm -rf %{buildroot}
 
 cd build/
-make install DESTDIR=%{buildroot}
+%makeinstall DESTDIR=%{buildroot}
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
