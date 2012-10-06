@@ -1,32 +1,44 @@
+%define major 0
+%define libname %mklibname %{name} %{major}
+%define devname %mklibname %{name} -d
+
 Name:		yaml-cpp
-Version:	0.2.7
-Release:	%mkrel 2
+Version:	0.3.0
+Release:	1
 Summary:	A YAML parser and emitter for C++
-Group:		Development/C++ 
-License:	MIT 
+Group:		Development/C++
+License:	MIT
 URL:		http://code.google.com/p/yaml-cpp/
 Source0:	http://yaml-cpp.googlecode.com/files/%{name}-%{version}.tar.gz
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 BuildRequires:	cmake
 
 %description
 yaml-cpp is a YAML parser and emitter in C++ written around the YAML 1.2 spec.
 
+%package	-n %{libname}
+Summary:	A YAML parser and emitter for C++
+Group:		System/Libraries
+License:	MIT
+Obsoletes:	%{name} < 0.3.0
 
-%package	devel
+%description	-n %{libname}
+yaml-cpp is a YAML parser and emitter in C++ written around the YAML 1.2 spec.
+
+%package	-n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/C++
 License:	MIT
-Requires:	%{name} = %{version}-%{release}
-Requires:	pkgconfig
+Obsoletes:	%{name}-devel < 0.3.0
+Provides:	%{name}-devel = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
 
-%description	devel
+%description	-n %{devname}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q 
-# Fix eol 
+%setup -q -n %{name}
+# Fix eol
 sed -i 's/\r//' license.txt
 
 %build
@@ -35,27 +47,13 @@ sed -i 's/\r//' license.txt
 %make VERBOSE=1
 
 %install
-rm -rf %{buildroot}
+%makeinstall_std -C build
 
-cd build/
-%makeinstall DESTDIR=%{buildroot}
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
+%files -n %{libname}
+%{_libdir}/*.so.%{major}*
 
-
-%clean
-rm -rf % {buildroot}
-
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
-%files
-%defattr(-,root,root,-)
-%doc license.txt
-%{_libdir}/*.so.*
-
-
-%files devel
-%defattr(-,root,root,-)
+%files -n %{devname}
 %{_includedir}/yaml-cpp/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+
