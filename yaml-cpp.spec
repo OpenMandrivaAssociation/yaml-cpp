@@ -10,6 +10,7 @@ Group:		Development/C++
 License:	MIT
 URL:		http://code.google.com/p/yaml-cpp/
 Source0:	http://yaml-cpp.googlecode.com/files/%{name}-%{version}.tar.gz
+Source100:	yaml-cpp.rpmlintrc
 BuildRequires:	cmake
 
 %description
