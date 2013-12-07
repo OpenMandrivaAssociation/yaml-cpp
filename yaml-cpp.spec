@@ -4,7 +4,7 @@
 
 Name:		yaml-cpp
 Version:	0.3.0
-Release:	3
+Release:	4
 Summary:	A YAML parser and emitter for C++
 Group:		Development/C++
 License:	MIT
