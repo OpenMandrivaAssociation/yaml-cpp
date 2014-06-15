@@ -1,10 +1,10 @@
-%define major 0
+%define major 0.5
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 
 Name:		yaml-cpp
-Version:	0.3.0
-Release:	6
+Version:	0.5.1
+Release:	1
 Summary:	A YAML parser and emitter for C++
 Group:		Development/C++
 License:	MIT
@@ -38,7 +38,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 # Fix eol
 sed -i 's/\r//' license.txt
 
