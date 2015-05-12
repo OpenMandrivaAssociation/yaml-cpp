@@ -3,13 +3,13 @@
 %define devname %mklibname %{name} -d
 
 Name:		yaml-cpp
-Version:	0.5.1
-Release:	4
+Version:	0.5.2
+Release:	1
 Summary:	A YAML parser and emitter for C++
 Group:		Development/C++
 License:	MIT
-URL:		http://code.google.com/p/yaml-cpp/
-Source0:	http://yaml-cpp.googlecode.com/files/%{name}-%{version}.tar.gz
+URL:		https://github.com/jbeder/yaml-cpp
+Source0:	https://github.com/jbeder/yaml-cpp/archive/%{name}-release-%{version}.tar.gz
 Source100:	yaml-cpp.rpmlintrc
 BuildRequires:	cmake
 BuildRequires:	boost-devel
@@ -39,7 +39,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%setup -q -n %{name}-release-%{version}
 # Fix eol
 sed -i 's/\r//' license.txt
 
