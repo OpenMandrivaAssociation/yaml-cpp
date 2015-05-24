@@ -4,7 +4,7 @@
 
 Name:		yaml-cpp
 Version:	0.5.2
-Release:	1
+Release:	2
 Summary:	A YAML parser and emitter for C++
 Group:		Development/C++
 License:	MIT
@@ -17,7 +17,7 @@ BuildRequires:	boost-devel
 %description
 yaml-cpp is a YAML parser and emitter in C++ written around the YAML 1.2 spec.
 
-%package	-n %{libname}
+%package -n %{libname}
 Summary:	A YAML parser and emitter for C++
 Group:		System/Libraries
 License:	MIT
@@ -26,7 +26,7 @@ Obsoletes:	%{name} < 0.3.0
 %description	-n %{libname}
 yaml-cpp is a YAML parser and emitter in C++ written around the YAML 1.2 spec.
 
-%package	-n %{devname}
+%package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/C++
 License:	MIT
@@ -58,14 +58,3 @@ sed -i 's/\r//' license.txt
 %{_includedir}/yaml-cpp/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-
-
-%changelog
-* Thu Oct 27 2011 Alexander Khrukin <akhrukin@mandriva.org> 0.2.7-2mdv2012.0
-+ Revision: 707635
-- added macroses insteed of build scripts
-
-* Thu Oct 27 2011 Alexander Khrukin <akhrukin@mandriva.org> 0.2.7-1
-+ Revision: 707561
-- imported package yaml-cpp
-
