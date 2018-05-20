@@ -14,6 +14,7 @@ Source100:	yaml-cpp.rpmlintrc
 Patch0:		yaml-cpp-0.6.2-linkage.patch
 BuildRequires:	cmake ninja
 BuildRequires:	boost-devel
+BuildRequires:	gtest-devel
 
 %description
 yaml-cpp is a YAML parser and emitter in C++ written around the YAML 1.2 spec.
