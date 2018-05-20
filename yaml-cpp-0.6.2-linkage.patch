@@ -1,0 +1,11 @@
+diff -up yaml-cpp-yaml-cpp-0.6.2/test/CMakeLists.txt.omv~ yaml-cpp-yaml-cpp-0.6.2/test/CMakeLists.txt
+--- yaml-cpp-yaml-cpp-0.6.2/test/CMakeLists.txt.omv~	2018-05-20 21:28:17.265336822 +0200
++++ yaml-cpp-yaml-cpp-0.6.2/test/CMakeLists.txt	2018-05-20 21:28:28.799072642 +0200
+@@ -39,6 +39,6 @@ add_executable(run-tests
+ set_target_properties(run-tests PROPERTIES
+   COMPILE_FLAGS "${yaml_c_flags} ${yaml_cxx_flags} ${yaml_test_flags}"
+ )
+-target_link_libraries(run-tests yaml-cpp gmock)
++target_link_libraries(run-tests yaml-cpp gmock pthread)
+ 
+ add_test(yaml-test ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/run-tests)

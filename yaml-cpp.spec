@@ -1,9 +1,9 @@
-%define major 0.5
+%define major 0.6
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 
 Name:		yaml-cpp
-Version:	0.5.3
+Version:	0.6.2
 Release:	1
 Summary:	A YAML parser and emitter for C++
 Group:		Development/C++
@@ -11,7 +11,8 @@ License:	MIT
 URL:		https://github.com/jbeder/yaml-cpp
 Source0:	https://github.com/jbeder/yaml-cpp/archive/%{name}-%{version}.tar.gz
 Source100:	yaml-cpp.rpmlintrc
-BuildRequires:	cmake
+Patch0:		yaml-cpp-0.6.2-linkage.patch
+BuildRequires:	cmake ninja
 BuildRequires:	boost-devel
 
 %description
@@ -39,15 +40,18 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
 # ask cmake to not strip binaries
-%cmake -DYAML_CPP_BUILD_TOOLS=0
-%make VERBOSE=1
+%cmake -DYAML_CPP_BUILD_TOOLS=0 \
+	-DBUILD_GMOCK:BOOL=OFF \
+	-DBUILD_GTEST:BOOL=OFF \
+	-G Ninja
+%ninja_build
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}*
@@ -56,3 +60,4 @@ developing applications that use %{name}.
 %{_includedir}/yaml-cpp/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+%{_libdir}/cmake/yaml-cpp
