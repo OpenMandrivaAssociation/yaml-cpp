@@ -45,10 +45,13 @@ developing applications that use %{name}.
 
 %build
 # ask cmake to not strip binaries
-%cmake -DYAML_CPP_BUILD_TOOLS=0 \
+%cmake \
+	-DYAML_CPP_BUILD_TESTS=OFF \
+	-DYAML_CPP_BUILD_TOOLS=OFF \
 	-DBUILD_GMOCK:BOOL=OFF \
 	-DBUILD_GTEST:BOOL=OFF \
 	-G Ninja
+
 %ninja_build
 
 %install
