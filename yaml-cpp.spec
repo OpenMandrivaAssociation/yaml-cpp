@@ -3,15 +3,14 @@
 %define devname %mklibname %{name} -d
 
 Name:		yaml-cpp
-Version:	0.6.2
-Release:	3
+Version:	0.6.3
+Release:	1
 Summary:	A YAML parser and emitter for C++
 Group:		Development/C++
 License:	MIT
 URL:		https://github.com/jbeder/yaml-cpp
 Source0:	https://github.com/jbeder/yaml-cpp/archive/%{name}-%{version}.tar.gz
 Source100:	yaml-cpp.rpmlintrc
-Patch0:		yaml-cpp-0.6.2-linkage.patch
 BuildRequires:	cmake ninja
 BuildRequires:	boost-devel
 BuildRequires:	gtest-devel
@@ -48,6 +47,7 @@ developing applications that use %{name}.
 %cmake \
 	-DYAML_CPP_BUILD_TESTS=OFF \
 	-DYAML_CPP_BUILD_TOOLS=OFF \
+	-DYAML_BUILD_SHARED_LIBS=ON \
 	-DBUILD_GMOCK:BOOL=OFF \
 	-DBUILD_GTEST:BOOL=OFF \
 	-G Ninja
