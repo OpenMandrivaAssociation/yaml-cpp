@@ -63,5 +63,5 @@ developing applications that use %{name}.
 %files -n %{devname}
 %{_includedir}/yaml-cpp/
 %{_libdir}/*.so
-#{_libdir}/pkgconfig/*.pc
+%{_datadir}/pkgconfig/*.pc
 %{_datadir}/cmake/yaml-cpp/
