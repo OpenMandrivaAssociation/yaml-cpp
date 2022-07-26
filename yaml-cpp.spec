@@ -3,7 +3,7 @@
 %define devname %mklibname %{name} -d
 
 Name:		yaml-cpp
-Version:	0.6.3
+Version:	0.7.0
 Release:	1
 Summary:	A YAML parser and emitter for C++
 Group:		Development/C++
