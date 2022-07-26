@@ -9,7 +9,7 @@ Summary:	A YAML parser and emitter for C++
 Group:		Development/C++
 License:	MIT
 URL:		https://github.com/jbeder/yaml-cpp
-Source0:	https://github.com/jbeder/yaml-cpp/archive/%{name}-{name}-%{version}.tar.gz
+Source0:	https://github.com/jbeder/yaml-cpp/archive/%{name}-%{name}-%{version}.tar.gz
 Source100:	yaml-cpp.rpmlintrc
 BuildRequires:	cmake ninja
 BuildRequires:	boost-devel
