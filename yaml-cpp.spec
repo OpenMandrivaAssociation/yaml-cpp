@@ -1,10 +1,10 @@
 %define major 0.8
-%define libname %mklibname %{name} %{major}
+%define libname %mklibname %{name}
 %define devname %mklibname %{name} -d
 
 Name:		yaml-cpp
 Version:	0.8.0
-Release:	1
+Release:	2
 Summary:	A YAML parser and emitter for C++
 Group:		Development/C++
 License:	MIT
