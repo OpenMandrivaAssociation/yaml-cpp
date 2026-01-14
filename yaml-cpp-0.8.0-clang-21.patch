@@ -1,0 +1,11 @@
+diff -up yaml-cpp-0.8.0/src/emitterutils.cpp.omv~ yaml-cpp-0.8.0/src/emitterutils.cpp
+--- yaml-cpp-0.8.0/src/emitterutils.cpp.omv~	2026-01-14 03:39:39.469467902 +0100
++++ yaml-cpp-0.8.0/src/emitterutils.cpp	2026-01-14 03:39:45.831715391 +0100
+@@ -1,6 +1,7 @@
+ #include <algorithm>
+ #include <iomanip>
+ #include <sstream>
++#include <cstdint>
+ 
+ #include "emitterutils.h"
+ #include "exp.h"

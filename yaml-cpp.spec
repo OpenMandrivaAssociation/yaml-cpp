@@ -15,6 +15,9 @@ BuildRequires:	cmake ninja
 BuildRequires:	boost-devel
 BuildRequires:	gtest-devel
 
+%patchlist
+yaml-cpp-0.8.0-clang-21.patch
+
 %description
 yaml-cpp is a YAML parser and emitter in C++ written around the YAML 1.2 spec.
 
