@@ -3,8 +3,8 @@
 %define devname %mklibname %{name} -d
 
 Name:		yaml-cpp
-Version:	0.8.0
-Release:	2
+Version:	0.9.0
+Release:	1
 Summary:	A YAML parser and emitter for C++
 Group:		Development/C++
 License:	MIT
@@ -16,7 +16,7 @@ BuildRequires:	boost-devel
 BuildRequires:	gtest-devel
 
 %patchlist
-yaml-cpp-0.8.0-clang-21.patch
+# dropped (no longer applies): yaml-cpp-0.9.0-clang-21.patch
 
 %description
 yaml-cpp is a YAML parser and emitter in C++ written around the YAML 1.2 spec.
@@ -43,7 +43,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1 -n yaml-cpp-yaml-cpp-0.9.0
 
 %build
 # ask cmake to not strip binaries
