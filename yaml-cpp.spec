@@ -1,4 +1,4 @@
-%define major 0.8
+%define major 0.9
 %define libname %mklibname %{name}
 %define devname %mklibname %{name} -d
 
@@ -36,7 +36,7 @@ Group:		Development/C++
 License:	MIT
 Obsoletes:	%{name}-devel < 0.3.0
 Provides:	%{name}-devel = %{version}-%{release}
-Requires:	%{libname} = %{version}-%{release}
+Requires:	%{libname} = %{EVRD}
 
 %description	-n %{devname}
 The %{name}-devel package contains libraries and header files for
