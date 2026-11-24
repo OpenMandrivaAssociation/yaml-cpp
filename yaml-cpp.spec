@@ -9,7 +9,8 @@ Summary:	A YAML parser and emitter for C++
 Group:		Development/C++
 License:	MIT
 URL:		https://github.com/jbeder/yaml-cpp
-Source0:	https://github.com/jbeder/yaml-cpp/archive/refs/tags/%{version}.tar.gz
+# The tag is yaml-cpp-0.9.0; the lookaside file keeps the short name.
+Source0:	https://github.com/jbeder/yaml-cpp/archive/refs/tags/%{name}-%{version}.tar.gz#/%{version}.tar.gz
 Source100:	yaml-cpp.rpmlintrc
 BuildRequires:	cmake ninja
 BuildRequires:	boost-devel
@@ -26,6 +27,13 @@ Summary:	A YAML parser and emitter for C++
 Group:		System/Libraries
 License:	MIT
 Obsoletes:	%{name} < 0.3.0
+# The ELF generator only provides the real SONAME, libyaml-cpp.so.0.9.
+# Unrebuilt binaries still require the 0.8 name; %%install ships that symlink.
+%if "%{_lib}" == "lib64"
+Provides:	libyaml-cpp.so.0.8()(64bit)
+%else
+Provides:	libyaml-cpp.so.0.8
+%endif
 
 %description	-n %{libname}
 yaml-cpp is a YAML parser and emitter in C++ written around the YAML 1.2 spec.
@@ -59,9 +67,12 @@ developing applications that use %{name}.
 
 %install
 %ninja_install -C build
+# Binaries built against 0.8 record SONAME libyaml-cpp.so.0.8.
+ln -s libyaml-cpp.so.0.9 %{buildroot}%{_libdir}/libyaml-cpp.so.0.8
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}*
+%{_libdir}/libyaml-cpp.so.0.8
 
 %files -n %{devname}
 %{_includedir}/yaml-cpp/
